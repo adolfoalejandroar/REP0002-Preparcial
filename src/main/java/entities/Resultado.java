@@ -2,8 +2,7 @@ package entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -14,17 +13,20 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Seleccion {
+public class Resultado {
 
 	@Id
 	private int id;
 	
-	@Getter @Setter private String nombre;
+	@OneToOne
+	@Getter @Setter private Partido partido;
 	
-	@ManyToOne
-	@JoinColumn(name="continente_id")
-	@Getter @Setter private Continente continente;
+	@OneToOne
+	@Getter @Setter private Seleccion seleccion;
 	
-	@Getter @Setter private char grupo;
+	@Getter @Setter private int goles;
+	
+	@Getter @Setter private int amarillas;
+	
+	@Getter @Setter private int rojas;
 }
-

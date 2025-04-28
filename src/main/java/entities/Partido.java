@@ -3,6 +3,7 @@ package entities;
 import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -20,5 +21,6 @@ public class Partido {
 	
 	@Getter @Setter private LocalDate fecha;
 	
+	@OneToOne
 	@Getter @Setter private Estadio estadio;
 }
