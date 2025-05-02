@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import entities.Seleccion;
-import services.Seleccion_Service;
+import services.SeleccionService;
 
 @CrossOrigin(origins="*", allowedHeaders="*")
 @RestController
 @RequestMapping("/selecciones")
-public class Seleccion_Controller {
+public class SeleccionController {
 
 	@Autowired
-	Seleccion_Service seleccionServ;
+	SeleccionService seleccionServ;
 	
 	@GetMapping("/test")
 	public boolean Grettings() {

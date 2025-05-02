@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import entities.Seleccion;
-import repository.Seleccion_Repository;
+import repository.SeleccionRepository;
 
 @Service
-public class Seleccion_Service {
+public class SeleccionService {
 	@Autowired
-	Seleccion_Repository seleccionRep;
+	SeleccionRepository seleccionRep;
 	
 	List<Seleccion> selecciones = new ArrayList<>();
 

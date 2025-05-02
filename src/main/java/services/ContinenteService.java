@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import entities.Continente;
-import repository.Continente_Repository;
+import repository.ContinenteRepository;
 
 @Service
-public class Continente_Service {
+public class ContinenteService {
 
 	@Autowired
-	Continente_Repository continenteRep;
+	ContinenteRepository continenteRep;
 	
 	List<Continente> continentes = new ArrayList<>();
 

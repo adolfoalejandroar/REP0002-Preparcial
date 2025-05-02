@@ -7,17 +7,16 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import entities.Continente;
-import services.Continente_Service;
+import services.ContinenteService;
 
 @CrossOrigin(origins="*", allowedHeaders="*")
 @RestController
 @RequestMapping("/continente")
-public class Continente_Controller {
+public class ContinenteController {
 	
 	@Autowired
-	Continente_Service continenteServ;
+	ContinenteService continenteServ;
 	
 	@GetMapping("/test")
 	public boolean Grettings() {
