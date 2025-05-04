@@ -2,6 +2,7 @@ package com.example.demo.services;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 import com.example.demo.entities.Continente;
 import com.example.demo.repository.ContinenteRepository;
@@ -21,7 +22,9 @@ public class ContinenteService {
 	}
 
 	public Continente get(int id) {
-		return continenteRep.getReferenceById(id);
+		var pId = continenteRep.getReferenceById(id).getId();
+		var pNombre = continenteRep.getReferenceById(id).getNombre();
+		return new Continente(pId, pNombre);
 	}
 
 	// #############################
@@ -58,5 +61,17 @@ public class ContinenteService {
 	
 	public void put(Continente continente) {
 		continenteRep.save(continente);
+	}
+	
+	// #############################
+	// Test Methods
+	// #############################
+	
+	public Boolean find(int id) {
+		return continenteRep.existsById(id);
+	}
+	
+	public Boolean find(Continente continente) {
+		return continenteRep.exists(Example.of(continente));
 	}
 }
