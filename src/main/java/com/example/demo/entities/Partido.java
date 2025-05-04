@@ -1,5 +1,6 @@
-package entities;
+package com.example.demo.entities;
 
+import java.time.LocalDate;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
@@ -13,20 +14,13 @@ import lombok.Setter;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Resultado {
+public class Partido {
 
 	@Id
 	private int id;
 	
-	@OneToOne
-	@Getter @Setter private Partido partido;
+	private LocalDate fecha;
 	
 	@OneToOne
-	@Getter @Setter private Seleccion seleccion;
-	
-	@Getter @Setter private int goles;
-	
-	@Getter @Setter private int amarillas;
-	
-	@Getter @Setter private int rojas;
+	private Estadio estadio;
 }

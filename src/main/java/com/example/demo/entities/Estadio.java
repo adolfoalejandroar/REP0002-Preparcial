@@ -1,8 +1,7 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -18,8 +17,7 @@ public class Estadio {
 	@Id
 	private int id;
 	
-	@Getter @Setter private String nombre;
+	private String nombre;
 	
-	@OneToMany
-	@Getter @Setter private int capacidad;
+	private int capacidad;
 }

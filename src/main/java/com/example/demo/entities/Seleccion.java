@@ -1,4 +1,4 @@
-package entities;
+package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -6,9 +6,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Data
@@ -19,12 +17,12 @@ public class Seleccion {
 	@Id
 	private int id;
 	
-	@Getter @Setter private String nombre;
+	private String nombre;
 	
 	@ManyToOne
 	@JoinColumn(name="continente_id")
-	@Getter @Setter private Continente continente;
+	private Continente continente;
 	
-	@Getter @Setter private char grupo;
+	private char grupo;
 }
 

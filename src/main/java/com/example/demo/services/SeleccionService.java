@@ -1,11 +1,12 @@
-package services;
+package com.example.demo.services;
 
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import entities.Seleccion;
-import repository.SeleccionRepository;
+
+import com.example.demo.entities.Seleccion;
+import com.example.demo.repository.SeleccionRepository;
 
 @Service
 public class SeleccionService {
