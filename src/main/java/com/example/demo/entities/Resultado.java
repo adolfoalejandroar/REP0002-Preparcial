@@ -1,13 +1,14 @@
 package com.example.demo.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Data
@@ -16,12 +17,15 @@ import lombok.Setter;
 public class Resultado {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="partido_id")
 	private Partido partido;
 	
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name="seleccion_id")
 	private Seleccion seleccion;
 	
 	private int goles;
