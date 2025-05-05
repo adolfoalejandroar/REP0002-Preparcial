@@ -26,13 +26,13 @@ public class Seleccion {
 	
 	private String nombre;
 	
+	private char grupo;
+	
+	@OneToMany(mappedBy = "seleccion")	
+	private List<Resultado> resultados;
+	
 	@ManyToOne
 	@JoinColumn(name="continente_id")
 	private Continente continente;
-	
-	private char grupo;
-	
-	@OneToMany(mappedBy="seleccion")
-	List<Resultado> resultados;
 }
 

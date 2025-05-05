@@ -7,135 +7,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entities.Seleccion;
 import com.example.demo.repository.SeleccionRepository;
 
-/**
- * This service handles CRUD operations for the "Seleccion" entity. It provides
- * methods to create, read, update, and delete "Seleccion" objects.
- *
- * <h2>Example usage:</h2>
- *
- * <ul>
- * <li><b>To retrieve all "Seleccion" objects:</b></li>
- * 
- * <pre>
- * <code>GET /selecciones/list/all</code>
- * </pre>
- *
- * <li><b>To retrieve a specific "Seleccion" by ID:</b></li>
- * 
- * <pre>
- * <code>GET /selecciones/list/{id}</code>
- * </pre>
- *
- * <li><b>To create a single "Seleccion":</b></li>
- * 
- * <pre>
- * <code>POST /selecciones/post/one</code>
- * </pre>
- * 
- * <pre>
- *   {
- *     "nombre": "Marsellesa",
- *     "continente": {
- *       "id": 1
- *     },
- *     "grupo": "A"
- *   }
- * </pre>
- *
- * <li><b>To create multiple "Seleccion" objects:</b></li>
- * 
- * <pre>
- * <code>POST /selecciones/post/more</code>
- * </pre>
- * 
- * <pre>
- *   [
- *     {
- *       "nombre": "Marsellesa",
- *       "continente": {
- *         "id": 1
- *       },
- *       "grupo": "A"
- *     },
- *     {
- *       "nombre": "Santos Caobos",
- *       "continente": {
- *         "id": 1
- *       },
- *       "grupo": "Z"
- *     },
- *     {
- *       "nombre": "Pömeria",
- *       "continente": {
- *         "id": 1
- *       },
- *       "grupo": "A"
- *     },
- *     {
- *       "nombre": "Olivios Verdes",
- *       "continente": {
- *         "id": 2
- *       },
- *       "grupo": "A"
- *     },
- *     {
- *       "nombre": "Red Keepers",
- *       "continente": {
- *         "id": 5
- *       },
- *       "grupo": "B"
- *     }
- *   ]
- * </pre>
- *
- * <li><b>To delete a "Seleccion" by ID:</b></li>
- * 
- * <pre>
- * <code>DELETE /selecciones/del/{id}</code>
- * </pre>
- *
- * <li><b>To delete a specific "Seleccion" object:</b></li>
- * 
- * <pre>
- * <code>DELETE /selecciones/del/seleccion</code>
- * </pre>
- * 
- * <pre>
- *   {
- *     "id": 1,
- *     "nombre": "Marsellesa",
- *     "continente": {
- *       "id": 1
- *     },
- *     "grupo": "A"
- *   }
- * </pre>
- *
- * <li><b>To delete all "Seleccion" objects:</b></li>
- * 
- * <pre>
- * <code>DELETE /selecciones/del/all</code>
- * </pre>
- *
- * <li><b>To update a "Seleccion":</b></li>
- * 
- * <pre>
- * <code>PUT /selecciones/put/seleccion</code>
- * </pre>
- * 
- * <pre>
- *   {
- *     "id": 1,
- *     "nombre": "Marsellesa",
- *     "continente": {
- *       "id": 1
- *     },
- *     "grupo": "A"
- *   }
- * </pre>
- * </ul>
- */
-
 @Service
 public class SeleccionService {
 
@@ -152,7 +23,7 @@ public class SeleccionService {
 			if (seleccion != null)
 				seleccion.getContinente().setSelecciones(null);
 		});
-		return selecciones;
+		return seleccionRep.findAll();
 	}
 
 	public Seleccion get(int id) {
