@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import com.example.demo.entities.Seleccion;
+import com.example.demo.entities.Resultado;
 import com.example.demo.services.SeleccionService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -54,40 +55,49 @@ public class SeleccionController {
 	public void create(@RequestBody List<Seleccion> selecciones) {
 		seleccionServ.post(selecciones);
 	}
-	
+
 	// ############################################################
 	// DELETE Methods
 	// ############################################################
-	
+
 	@DeleteMapping("/del/{id}")
 	public void delete(@PathVariable int id) {
 		seleccionServ.delete(id);
 	}
-	
+
 	// ----------------------------------------------------------
-	
+
 	@DeleteMapping("/del/seleccion")
 	public void delete(@RequestBody Seleccion seleccion) {
 		seleccionServ.delete(seleccion);
 	}
-	
+
 	// ----------------------------------------------------------
-	
+
 	@DeleteMapping("/del/all")
 	public void delete() {
 		seleccionServ.delete();
 	}
-	
+
 	// ##########################################################
 	// PUT Methods
 	// ##########################################################
-	
+
 	@PutMapping("/put/seleccion")
 	public void update(@RequestBody Seleccion seleccion) {
-		if(seleccionServ.find(seleccion.getId())) {
+		if (seleccionServ.find(seleccion.getId())) {
 			seleccionServ.put(seleccion);
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Seleccion no encontrada");
 		}
+	}
+
+	// ##########################################################
+	// EXTRA Methods
+	// ##########################################################
+	
+	@GetMapping("/list/{id}/results")
+	public List<Resultado> getCustom1(@PathVariable int id) {
+		return seleccionServ.getCustom1(id);
 	}
 }

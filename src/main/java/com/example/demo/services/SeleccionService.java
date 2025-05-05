@@ -1,9 +1,12 @@
 package com.example.demo.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Resultado;
 import com.example.demo.entities.Seleccion;
 import com.example.demo.repository.SeleccionRepository;
 
@@ -20,16 +23,30 @@ public class SeleccionService {
 	public List<Seleccion> get() {
 		List<Seleccion> selecciones = seleccionRep.findAll();
 		selecciones.forEach(seleccion -> {
-			if (seleccion != null)
+			if (seleccion != null) {
 				seleccion.getContinente().setSelecciones(null);
+				seleccion.getResultados().forEach(resultado -> {
+					if (resultado != null) {
+						resultado.setSeleccion(null);
+						resultado.setPartido(null);
+					}
+				});
+			}
 		});
 		return seleccionRep.findAll();
 	}
 
 	public Seleccion get(int id) {
 		Seleccion seleccion = seleccionRep.findById(id).orElse(null);
-		if (seleccion != null)
+		if (seleccion != null) {
 			seleccion.getContinente().setSelecciones(null);
+			seleccion.getResultados().forEach(resultado -> {
+				if (resultado != null) {
+					resultado.setSeleccion(null);
+					resultado.setPartido(null);
+				}
+			});
+		}
 		return seleccion;
 	}
 
@@ -79,5 +96,24 @@ public class SeleccionService {
 
 	public Boolean find(Seleccion seleccion) {
 		return seleccionRep.exists(Example.of(seleccion));
+	}
+
+	// #############################
+	// Test Methods
+	// #############################
+	
+	public List<Resultado> getCustom1(int id) {
+		List<Resultado> resultados = new ArrayList<>();
+		Seleccion seleccion = seleccionRep.findById(id).orElse(null);
+		if (seleccion != null) {
+			seleccion.getResultados().forEach(resultado -> {
+				if (resultado != null) {
+					resultado.setSeleccion(null);
+					resultado.setPartido(null);
+					resultados.add(resultado);
+				}
+			});
+		}
+		return resultados;
 	}
 }

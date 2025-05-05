@@ -33,11 +33,9 @@ public class Resultado {
 	
 	@OneToOne
 	@JoinColumn(name="partido_id")
-	@JsonIgnore
 	private Partido partido;
 	
 	@ManyToOne
 	@JoinColumn(name="seleccion_id")
-	@JsonIgnore
 	private Seleccion seleccion;
 }

@@ -21,15 +21,39 @@ public class EstadioService {
 		List<Estadio> estadio = estadioRep.findAll();
 		estadio.forEach(varEstadio -> {
 			if (varEstadio != null)
-				varEstadio.setPartidos(null);
+				varEstadio.getPartidos().forEach(partido -> {
+					if (partido != null) {
+						partido.setEstadio(null);
+						partido.getResultados().forEach(resultado -> {
+							if (resultado != null) {
+								resultado.setPartido(null);
+								resultado.getSeleccion().setResultados(null);
+								resultado.getSeleccion().setContinente(null);
+							}
+						});
+					}
+				});
 		});
 		return estadio;
 	}
 
 	public Estadio get(int id) {
 		Estadio estadio = estadioRep.findById(id).orElse(null);
-		if (estadio != null)
+		if (estadio != null) {
 			estadio.setPartidos(null);
+			estadio.getPartidos().forEach(partido -> {
+				if (partido != null) {
+					partido.setEstadio(null);
+					partido.getResultados().forEach(resultado -> {
+						if (resultado != null) {
+							resultado.setPartido(null);
+							resultado.getSeleccion().setResultados(null);
+							resultado.getSeleccion().setContinente(null);
+						}
+					});
+				}
+			});
+		}
 		return estadio;
 	}
 

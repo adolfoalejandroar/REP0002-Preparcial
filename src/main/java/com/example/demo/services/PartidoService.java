@@ -20,16 +20,32 @@ public class PartidoService {
 	public List<Partido> get() {
 		List<Partido> partidos = partidoRep.findAll();
 		partidos.forEach(partido -> {
-			if (partido != null)
+			if (partido != null) {
 				partido.getEstadio().setPartidos(null);
+				partido.getResultados().forEach(resultado -> {
+					if (resultado != null) {
+						resultado.setPartido(null);
+						resultado.getSeleccion().setResultados(null);
+						resultado.getSeleccion().setContinente(null);
+					}
+				});
+			}
 		});
 		return partidos;
 	}
 
 	public Partido get(int id) {
 		Partido partido = partidoRep.findById(id).orElse(null);
-		if (partido != null)
+		if (partido != null) {
 			partido.getEstadio().setPartidos(null);
+			partido.getResultados().forEach(resultado -> {
+				if (resultado != null) {
+					resultado.setPartido(null);
+					resultado.getSeleccion().setResultados(null);
+					resultado.getSeleccion().setContinente(null);
+				}
+			});
+		}
 		return partido;
 	}
 
